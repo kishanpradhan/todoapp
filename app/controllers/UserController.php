@@ -32,8 +32,33 @@ class UserController extends BaseController
 
 	public function getIndex()
 	{
-		$tasks = Task::where('creator_id', '=', Auth::user()->id)->get();
-		return View::make('user.todo')->with('tasks', $tasks);
+		if(Auth::check())
+		{
+			$tasks = Task::where('creator_id', '=', Auth::user()->id)->where('parent_id', '=', 0)->get();
+			$atasks = AssignedTask::where('assign_to_id', '=', Auth::user()->id)->get();
+			$returnval = array();
+			if(count($atasks)<1)
+			{
+				$returnval = 0;
+			}
+			else
+			{
+				foreach ($atasks as $key => $atask) {
+					$ta = Task::find($atask->task_id);
+					$ttitle = $ta->title;
+					$tid = $ta->id;
+					$value = array('tid' => $tid,
+									'ttitle' => $ttitle);
+					array_push($returnval, $value);
+				}
+
+			}
+			return View::make('user.todo')->with('tasks', $tasks)->with('atasks', $returnval);
+		}
+		else
+		{
+			return Redirect::route('getLogout');
+		}
 	}
 
 	public function getCreate()
@@ -123,7 +148,7 @@ class UserController extends BaseController
 	public function getLogout()
 	{
 		Auth::logout();
-		return Redirect::route('home');
+		return Redirect::to('user/login');
 	}
 
 	public function getCreateTask()

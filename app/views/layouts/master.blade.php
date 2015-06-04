@@ -4,7 +4,11 @@
 	@section('head')
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	{{ HTML::style('css/style.css') }}
+	{{ HTML::style('css/bootstrap.min.css') }}
+	{{ HTML::script('js/jquery.js') }}
+	{{ HTML::script('js/main.js') }}
+	{{ HTML::script('js/ajax.js') }}
+	{{ HTML::script('js/myscript.js') }}
 	@show
 </head>
 <body>
@@ -21,6 +25,7 @@
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ URL::to('user') }}">HOME</a></li>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if(!Auth::check())

@@ -64,6 +64,7 @@
 					{{ $errors->first('country') }}
 				@endif
 	            </div>
+	            {{ Form::token() }}
 	            <div class="form-group">
 	             <input type="submit" id="signbtn" name="signbtn" value="Create Account" class="btn btn-primary btn-lg btn-block"></input>
 	       		</div>
