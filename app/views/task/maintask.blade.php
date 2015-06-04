@@ -134,7 +134,7 @@
 				</li>
 				@endforeach
 			</ul>
-			<a href="#" id="addcheck">Add Checklist</a>
+			<a href="javascript:void(0)" id="addcheck">Add Checklist</a>
 			@if($errors->has('checktitle'))
 				{{ $errors->first('checktitle') }}
 			@endif
@@ -148,9 +148,9 @@
 		</div>
 		<div>
 			<div>Showing comment</div>
-			@foreach($comments as $comment)
-				<div>{{$comment->comment}}</div>
-			@endforeach
+			@for($i=0;$i<count($comments);$i++)
+				<div>{{ $comments[$i]['username'] }} : {{$comments[$i]['comment']}}</div>
+			@endfor
 			<div>
 				<form method="post" action="{{ URL::route('comment', $mtasks->id) }}">
 					<div class="form-group{{ ($errors->has('comment')) ? ' has-error' : '' }}">
@@ -180,12 +180,28 @@
 					<button type="submit" >Add Member</button>
 				</div>
 			</form>
-
+			<br>
+			<h5>Member associated</h5>
+			@for($i=0;$i<count($assign);$i++)
+				<div>{{ $assign[$i]['username'] }} : {{$assign[$i]['email']}}</div>
+			@endfor
 		</div>
+		<br>
 		<div>
-			<div>File 1</div>
-			<div>File 2</div>
-			<div>File 3</div>
+			<h3>File Upload</h3>
+			@for($i=0;$i<count($files);$i++)
+				<div>{{ $files[$i]['username'] }} : <a href="{{$files[$i]['file']}}">File</a></div>
+			@endfor
+			<div>
+				<form method="post" action="{{ URL::route('upload-file', $mtasks->id) }}" enctype="multipart/form-data">
+					<label for="file">File Upload</label>
+					<input type="file" name="file" id="file" >
+					<button type="submit">Upload</button>
+					@if($errors->has('file'))
+						{{ $errors->first('file') }}
+					@endif
+				</form>
+			</div>
 		</div>
 		<div>
 			For Notification <br>{{ var_dump($assign) }}

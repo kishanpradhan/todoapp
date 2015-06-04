@@ -14,10 +14,17 @@ Route::get('user/task/{id}/getchecklist/{cid}', array('uses' => 'ChecklistContro
 Route::post('user/task/{id}/postchecklisttitle', array('uses' => 'ChecklistController@postChecklistTitle', 'as' => 'checklist-title'));
 Route::post('user/task/{id}/postchecklistdata', array('uses' => 'ChecklistController@postChecklistData', 'as' => 'checklist-data'));
 Route::post('user/task/{id}/postsubcheckdelete', array('uses' => 'ChecklistController@postSubCheckDelete', 'as' => 'subcheck-delete'));
+Route::post('user/task/{id}/postcheckdelete', array('uses' => 'ChecklistController@postCheckDelete', 'as' => 'check-delete'));
+
+Route::post('user/task/{id}/postfile', array('uses' => 'UserTaskController@postFile', 'as' => 'upload-file'));
 
 Route::controller('user/task/{id}', 'UserTaskController');
+Route::group(array('before' => 'auth'), function()
+{
+	Route::controller('user', 'UserController');
 
-Route::controller('user', 'UserController');
+});
+
 
 //Route::controller('user', array('before' => 'auth', 'uses' => 'UserController'));
 

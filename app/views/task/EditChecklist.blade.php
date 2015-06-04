@@ -18,7 +18,9 @@
 
 	<div id="generate_task_box" class="active allbox">
 		<h2>Edit {{ $checks->title }}</h2>
-		<form method="post" action="">
+		<form method="post" action="{{ URL::route('check-delete', $tid) }}">
+			<input type="hidden" name="checkid" value="{{ $checks->id }}" >
+			{{ Form::token() }}
 			<button type="submit">Delete</button>
 		</form>
 
