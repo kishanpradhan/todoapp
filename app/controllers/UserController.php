@@ -32,8 +32,7 @@ class UserController extends BaseController
 
 	public function getIndex()
 	{
-		if(Auth::check())
-		{
+		
 			$tasks = Task::where('creator_id', '=', Auth::user()->id)->where('parent_id', '=', 0)->get();
 			$atasks = AssignedTask::where('assign_to_id', '=', Auth::user()->id)->get();
 			$returnval = array();
@@ -54,14 +53,10 @@ class UserController extends BaseController
 
 			}
 			return View::make('user.todo')->with('tasks', $tasks)->with('atasks', $returnval);
-		}
-		else
-		{
-			return Redirect::route('getLogout');
-		}
+		
 	}
 
-	public function getCreate()
+	public function getCreate()//next time you will be deleted
 	{
 		return View::make('user.register');
 	}
@@ -98,18 +93,19 @@ class UserController extends BaseController
 				$userprofile->user_id = $user->id;
 				if($userprofile->save())
 				{
-					return Redirect::to('user/login')->with('success', 'You registered successfully. You can now login');
+					return Redirect::to('login')->with('success', 'You registered successfully. You can now login');
 				}
 			}
 			else
 			{
-				return Redirect::to('user/create')->with('fail', 'Your registration failed. Please try again.');
+				return Redirect::to('create')->with('fail', 'Your registration failed. Please try again.');
 			}
 		}
 	}
 
-	public function getLogin()
+	public function getLogin()//Next time you will not be here
 	{
+		dd('die');
 		return View::make('hello');
 	}
 
@@ -148,7 +144,7 @@ class UserController extends BaseController
 	public function getLogout()
 	{
 		Auth::logout();
-		return Redirect::to('user/login');
+		return Redirect::to('login');
 	}
 
 	public function getCreateTask()

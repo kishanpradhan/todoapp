@@ -4,7 +4,7 @@
 
 class Comment extends Eloquent
 {
-	public function post()
+	public function tasks()
     {
         return $this->belongsTo('Task');
     }	

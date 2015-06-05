@@ -7,6 +7,14 @@ class UserTaskController extends \BaseController {
 	public function getIndex($id)
 	{
 		$mtasks = Task::find($id);
+		if(count($mtasks) == 0){
+			return Redirect::to('user')->with("fail", 'Task Not Found.');
+		}
+		$assigncheck = AssignedTask::where('task_id', '=', $id)->where('assign_to_id', '=', Auth::user()->id)->first();
+		if(Auth::user()->id != $mtasks->creator_id && Auth::user()->id != $assigncheck['assign_to_id'])
+		{
+			return Redirect::to('user')->with("fail", 'Task Not Found.');
+		}
 		$stasks = Task::where('parent_id', '=', $mtasks->id)->get();
 		$assign = AssignedTask::where('task_id', '=', $id)->get();
 		$value = array();
@@ -17,9 +25,10 @@ class UserTaskController extends \BaseController {
 		else
 		{
 			foreach ($assign as $key => $ass) {
-				$user = UsersProfile::where('user_id', '=', $ass->user_id)->first();
-				$user1 = User::find($ass->user_id);
-				array_push($value,['username' => "sdljfs", 'email' => "djfksj"]);
+				$user = UsersProfile::where('user_id', '=', $ass->assign_to_id)->first();
+				//return $ass->assign_to_id;
+				$user1 = User::find($ass->assign_to_id);
+				array_push($value,['username' => $user['first_name'], 'email' => $user1['email']]);
 			}
 		}
 
@@ -28,7 +37,7 @@ class UserTaskController extends \BaseController {
 		$returncomment = array();
 		foreach ($comments as $key => $comment) {
 			$user = UsersProfile::where('user_id', '=', $comment->user_id)->first();
-			array_push($returncomment,['username' => $user->first_name, 'comment' => $comment->comment]);
+			array_push($returncomment,['username' => $user->first_name, 'comment' => $comment->comment, 'cmtid' => $comment->id]);
 		}
 
 		$files = FileUpload::where('task_id', '=', $id)->get();
@@ -265,6 +274,36 @@ class UserTaskController extends \BaseController {
 		} 
 		else {
 		   return "not okkk";
+		}
+	}
+
+	public function postDeleteComment($id)
+	{
+		$cmtid = Input::get('cmtid');
+		//$comment = Comment::where('task_id', '=', $id)->find($cmtid);
+		$comment = Comment::find($cmtid);
+		if(count($comment) < 1)
+		{
+			return "not found ";
+		}
+		else
+		{
+			$task = Task::find($comment->task_id);
+			$user = User::find($comment->user_id);
+			if (($user->id == Auth::user()->id) || ($task->creator_id == Auth::user()->id)) {
+				if($comment->delete())
+				{
+					return Redirect::to('user/task/'.$id.'')->with('success', 'Comment deleted');	
+				}
+				else
+				{
+					return Redirect::to('user/task/'.$id.'')->with('fail', 'Comment cannot be deleted.');
+				}
+			}
+			else
+			{
+				return Redirect::to('user/task/'.$id.'')->with('fail', 'You are not the owner of the comment');
+			}
 		}
 	}
 	

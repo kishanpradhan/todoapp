@@ -19,7 +19,7 @@
 	<div class="container">
 		<h1>Login</h1>
 
-		<form role="form" name="userlogin" method="post" action="login">
+		<form role="form" name="userlogin" method="post" action="user/login">
 			<div class="form-group{{ ($errors->has('email')) ? ' has-error' : '' }}">
 				<label for="email">email: </lable>
 				<input id="email" name="email" type="text" class="form-control" placeholder="Your email">

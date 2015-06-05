@@ -29,7 +29,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if(!Auth::check())
-						<li><a href="{{ URL::to('user/create') }}">Register</a></li>
+						<li><a href="{{ URL::to('create') }}">Register</a></li>
 					@else
 						<li><a href="{{ URL::route('getLogout') }}">Logout</a></li>
 					@endif

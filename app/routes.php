@@ -16,17 +16,22 @@ Route::post('user/task/{id}/postchecklistdata', array('uses' => 'ChecklistContro
 Route::post('user/task/{id}/postsubcheckdelete', array('uses' => 'ChecklistController@postSubCheckDelete', 'as' => 'subcheck-delete'));
 Route::post('user/task/{id}/postcheckdelete', array('uses' => 'ChecklistController@postCheckDelete', 'as' => 'check-delete'));
 
+Route::post('user/task/{id}/postdeletecomment', array('uses' => 'UserTaskController@postDeleteComment', 'as' => 'comment-delete'));
+
 Route::post('user/task/{id}/postfile', array('uses' => 'UserTaskController@postFile', 'as' => 'upload-file'));
 
 Route::controller('user/task/{id}', 'UserTaskController');
-Route::group(array('before' => 'auth'), function()
-{
+//Route::group(array('before' => 'auth'), function()
+//{
 	Route::controller('user', 'UserController');
 
-});
-
-
-//Route::controller('user', array('before' => 'auth', 'uses' => 'UserController'));
+//});
+	//Route::get('user/create', array('before' => 'auth|myfil', 'uses' => 'UserController@getCreate'));
+	
+	Route::get('login', array('before' => 'myfil', 'uses' => 'UserFirstController@getLogin'));
+	Route::get('create', array('before' => 'myfil', 'uses' => 'UserFirstController@getCreate'));
+	
+	Route::get('user', array('before' => 'auth', 'uses' => 'UserController@getIndex'));//Working
 
 Route::get('/', array('uses' => 'HomeController@home', 'as' => 'home'));
 
@@ -34,3 +39,5 @@ Route::group(array('before' => 'auth'), function()
 {
 	Route::get('/user/logout', array('uses' => 'UserController@getLogout', 'as' => 'getLogout'));
 });
+
+//Route::get('test', 'UserFirstController@getAjax');

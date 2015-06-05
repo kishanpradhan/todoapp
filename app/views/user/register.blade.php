@@ -16,10 +16,10 @@
 	@endif
 
 
-	<div id="member_signup_box" class="deactive">
+	<div id="member_signup_box" class="col-md-4">
 		<h2>User Registration</h2>
 		<div id="form1" style="padding:0px 10px 10px 10px;">
-	    	<form role="form" class="form_box" method="post" name="signupform" id="signupform" action="create">
+	    	<form role="form" class="form_box" method="post" name="signupform" id="signupform" action="user/create">
 	           	<div class="form-group{{ ($errors->has('firstname')) ? ' has-error' : '' }}">
 				 <label id="label6">First Name</label>
 	             <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Your firstname">

@@ -94,6 +94,7 @@
 			</form>
 		</span>
 		<div>
+			<h3>Subtasks</h3>
 			@foreach($stasks as $stask)
 				<div>
 					<span>{{ $stask->title }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -111,15 +112,13 @@
 			<div><a href="{{ URL::route('add-sub-task', $mtasks->id) }}">Add new subtask</a></div>
 		</div>
 		<div>
+			<h3>Checklists</h3>
 			<ul>
 				@foreach($checklists as $checklist)
-				<li><a href="">{{ $checklist->title }}</a><a href="{{ URL::route('checklist', array($mtasks->id, $checklist->id)) }}">Edit checklist</a>
+				<li><a href="#">{{ $checklist->title }}</a><a href="{{ URL::route('checklist', array($mtasks->id, $checklist->id)) }}">Edit checklist</a>
 				<ul><?php $checkdata = json_decode($checklist->list_data, true); ?>
 					@for($i=0;$i<count($checkdata);$i++)
 						<li><input type="checkbox" id="{{ $checklist->id }}sub{{ $checkdata[$i]['id'] }}" name="{{ $checkdata[$i]['value'] }}">{{ $checkdata[$i]['value'] }}
-							
-							
-							<a href="javascript:void(0)" id="subcheckdelbtn{{ $checkdata[$i]['id'] }}" onclick="">Delete</a>
 						</li>
 					@endfor
 				</ul>
@@ -147,9 +146,17 @@
 			</div>
 		</div>
 		<div>
-			<div>Showing comment</div>
+			<h3>Comments</h3>
 			@for($i=0;$i<count($comments);$i++)
-				<div>{{ $comments[$i]['username'] }} : {{$comments[$i]['comment']}}</div>
+				<div><span>{{ $comments[$i]['username'] }} : {{$comments[$i]['comment']}}</span>
+
+					<span>
+						<form method="post" action="{{ URL::route('comment-delete', $mtasks->id) }}">
+							<input type="hidden" name="cmtid" value="{{ $comments[$i]['cmtid'] }}" >
+							<button type="submit">Delete</button>
+						</form>
+					</span>
+				</div>
 			@endfor
 			<div>
 				<form method="post" action="{{ URL::route('comment', $mtasks->id) }}">
@@ -203,8 +210,6 @@
 				</form>
 			</div>
 		</div>
-		<div>
-			For Notification <br>{{ var_dump($assign) }}
-		</div>
+		
 	</div>
 @stop

@@ -48,6 +48,17 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('myfil', function()
+{
+	if(Auth::check()){
+		return Redirect::to('user');
+	}
+	else{
+		
+	}
+	
+});
+
 
 Route::filter('auth.basic', function()
 {
