@@ -61,7 +61,7 @@ class UserTaskController extends \BaseController {
 		$returnfile = array();
 		foreach ($files as $key => $file) {
 			$user = UsersProfile::where('user_id', '=', $file->user_id)->first();
-			array_push($returnfile,['username' => $user->first_name, 'file' => $file->taskurl]);
+			array_push($returnfile,['id' => $file->id,'username' => $user->first_name, 'file' => $file->taskurl]);
 		}
 		
 		$checklists = Checklist::where('task_id', '=', $id)->get();
@@ -74,29 +74,6 @@ class UserTaskController extends \BaseController {
 						->with('assign', $value);
 	}
 
-	/*public function getAssignedTask($id)
-	{
-		$assign = AssignedTask::where('assign_to_id', '=', Auth::user()->id)
-									->where('accepted', '=', 0)
-									->where('task_id', '=', $id)->first();
-		if(count($assign) < 1)
-		{
-			return "No Task Request";
-		}
-		else
-		{
-			$task = Task::find($assign->task_id);
-			$userby = UsersProfile::find($asssign->assign_by_id);
-			$userto = UsersProfile::find($asssign->assign_to_id);
-
-			$value = array('task_title' => $task->title,
-							'assign_by_name' => $userby->first_name,
-							'assign_by_id' => $userby->id,
-							'assign_to_name' => $userto->first_name,
-							'assign_to_id' => $userto->id );
-			return $value;
-		}
-	}*/
 
 	public function getAddSubTask($id)
 	{
@@ -256,65 +233,7 @@ class UserTaskController extends \BaseController {
 		}
 	}
 
-	public function postFile($id)
-	{
-		$input = Input::all();
-		$validate = Validator::make(Input::all(), array(
-			'file' => 'required',
-		));
-
-		if($validate->fails())
-		{
-			return Redirect::to('user/task/'.$id.'')->withErrors($validate);
-		}
-		/*$extension = file::extension($input['file']['name']);
-		$directory = path('public').'uploads/';
-		$filename = sha1(Auth::user()->id.time()).".{$extension}";
-		$upload_success = Input::upload('file', $directory, $filename);
-
-		if($upload_success)
-		{
-			$file = new File();
-
-			$file->taskurl = URL::to('uploads/'.$filename);
-			$file->task_id = $id;
-			$file->user_id = Auth::user()->id;
-
-			if($file->save())
-			{
-				return Redirect::to('user/task/'.$id.'')->with('success', 'File uploaded successfully');
-			}
-			else
-			{
-				return Redirect::to('user/task/'.$id.'')->with('fail', 'File upload failed.');
-			}
-		}*/
-
-		$file = Input::file('file');
-		$extension = Input::file('file')->getClientOriginalExtension();
-		$destinationPath = 'public/uploads';
-		$filename = sha1(Auth::user()->id.time()).".$extension";
-		$upload_success = Input::file('file')->move($destinationPath, $filename);
-		if( $upload_success ) {
-		  	$file = new FileUpload();
-
-			$file->taskurl = URL::to($destinationPath.'/'.$filename);
-			$file->task_id = $id;
-			$file->user_id = Auth::user()->id;
-
-			if($file->save())
-			{
-				return Redirect::to('user/task/'.$id.'')->with('success', 'File uploaded successfully');
-			}
-			else
-			{
-				return Redirect::to('user/task/'.$id.'')->with('fail', 'File upload failed.');
-			}
-		} 
-		else {
-		   return "not okkk";
-		}
-	}
+	
 
 	public function postDeleteComment($id)
 	{

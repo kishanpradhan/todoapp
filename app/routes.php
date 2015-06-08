@@ -19,7 +19,8 @@ Route::post('user/task/{id}/postcheckdelete', array('uses' => 'ChecklistControll
 
 Route::post('user/task/{id}/postdeletecomment', array('uses' => 'UserTaskController@postDeleteComment', 'as' => 'comment-delete'));
 
-Route::post('user/task/{id}/postfile', array('uses' => 'UserTaskController@postFile', 'as' => 'upload-file'));
+Route::post('user/task/{id}/postfile', array('uses' => 'FileController@postFile', 'as' => 'upload-file'));
+Route::post('user/task/{id}/postfiledelete', array('uses' => 'FileController@postFileDelete', 'as' => 'delete-file'));
 
 Route::post('user/task/{id}/postdeletemember', array('uses' => 'UserTaskController@postDeleteMember', 'as' => 'member-delete'));
 
@@ -46,3 +47,6 @@ Route::group(array('before' => 'auth'), function()
 Route::post('test/{id}', 'UserFirstController@postAjax');
 Route::post('search/{id}', 'UserFirstController@postK');
 Route::post('ajax/{id}', 'UserFirstController@getAjax');
+
+Route::get('login/fb', 'LoginFacebookController@login');
+Route::get('login/fb/callback', 'LoginFacebookController@callback');

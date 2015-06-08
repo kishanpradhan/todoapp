@@ -213,8 +213,11 @@
 		<div>
 			<h3>File Upload</h3>
 			@for($i=0;$i<count($files);$i++)
-				<div>{{ $files[$i]['username'] }} : <a href="{{$files[$i]['file']}}">File</a></div>
+			<div id="file{{$files[$i]['id']}}"
+				<span>{{ $files[$i]['username'] }} : <a href="{{$files[$i]['file']}}">File</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span myattr="{{ $mtasks->id }}"><a href="javascript:void(0)" id="{{$files[$i]['id']}}" class="filedelete">Delete</a></span><hr></br>
 			@endfor
+			</div>
 			<div>
 				<form method="post" action="{{ URL::route('upload-file', $mtasks->id) }}" enctype="multipart/form-data">
 					<label for="file">File Uploaded</label>
