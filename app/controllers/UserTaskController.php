@@ -6,6 +6,21 @@ class UserTaskController extends \BaseController {
 
 	public function getIndex($id)
 	{
+// 		$client = new GuzzleHttp\Client();
+// $res = $client->get('https://www.facebook.com/', []);
+// echo $res->getStatusCode();
+// // "200"
+// echo $res->getHeader('content-type');
+// // 'application/json; charset=utf8'
+// echo $res->getBody();
+// // {"type":"User"...'
+
+// // Send an asynchronous request.
+
+
+// 		dd("dlkfnl");
+
+
 		$mtasks = Task::find($id);
 		if(count($mtasks) == 0){
 			return Redirect::to('user')->with("fail", 'Task Not Found.');
@@ -17,10 +32,12 @@ class UserTaskController extends \BaseController {
 		}
 		$stasks = Task::where('parent_id', '=', $mtasks->id)->get();
 		$assign = AssignedTask::where('task_id', '=', $id)->get();
+
 		$value = array();
 		if(count($assign) < 1)
 		{
-			$value = "No associated member";
+			$value = "";
+			
 		}
 		else
 		{
@@ -28,7 +45,7 @@ class UserTaskController extends \BaseController {
 				$user = UsersProfile::where('user_id', '=', $ass->assign_to_id)->first();
 				//return $ass->assign_to_id;
 				$user1 = User::find($ass->assign_to_id);
-				array_push($value,['username' => $user['first_name'], 'email' => $user1['email']]);
+				array_push($value,['id' => $ass['id'],'username' => $user['first_name'], 'email' => $user1['email']]);
 			}
 		}
 
@@ -172,6 +189,11 @@ class UserTaskController extends \BaseController {
 		}
 		else
 		{
+			$asscheck = AssignedTask::where('assign_by_id', '=', $check->id)->orWhere('assign_to_id', '=', $check->id)->get();
+			if(count($asscheck) > 0)
+			{
+				return Redirect::to('user/task/'.$id.'')->with('fail', 'Member has already been assigned.');
+			}
 			$assign = new AssignedTask();
 			$assign->task_id =  $id;
 			$assign->assign_by_id = Auth::user()->id;
@@ -184,6 +206,23 @@ class UserTaskController extends \BaseController {
 			else
 			{
 				return Redirect::to('user/task/'.$id.'')->with('fail', 'Member assignment failed.');
+			}
+		}
+	}
+
+	public function postDeleteMember($id)
+	{
+		$assid = Input::get('assid');
+		$did = AssignedTask::find($assid);
+		if($did->task_id == $id && ($did->assign_by_id == Auth::user()->id || $did->assign_to_id == Auth::user()->id))
+		{
+			if($did->delete())
+			{
+				return Redirect::to('user/task/'.$id.'')->with('success', 'Member deleted.');
+			}
+			else
+			{
+				return Redirect::to('user/task/'.$id.'')->with('fail', 'Member deletion failed.');
 			}
 		}
 	}

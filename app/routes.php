@@ -1,5 +1,6 @@
 <?php
-
+Route::group(array('before' => 'auth'), function()
+{
 Route::get('user/task/{id}/addsubtask', array('uses' => 'UserTaskController@getAddSubTask', 'as' => 'add-sub-task'));
 
 Route::post('user/task/{id}/deletesubtask', array('uses' => 'UserTaskController@postDeleteSubTask', 'as' => 'delete-sub-task'));
@@ -20,17 +21,19 @@ Route::post('user/task/{id}/postdeletecomment', array('uses' => 'UserTaskControl
 
 Route::post('user/task/{id}/postfile', array('uses' => 'UserTaskController@postFile', 'as' => 'upload-file'));
 
+Route::post('user/task/{id}/postdeletemember', array('uses' => 'UserTaskController@postDeleteMember', 'as' => 'member-delete'));
+
 Route::controller('user/task/{id}', 'UserTaskController');
-//Route::group(array('before' => 'auth'), function()
-//{
+
 	Route::controller('user', 'UserController');
 
-//});
-	//Route::get('user/create', array('before' => 'auth|myfil', 'uses' => 'UserController@getCreate'));
-	
+});
+	#-------For login and Registration------------------
 	Route::get('login', array('before' => 'myfil', 'uses' => 'UserFirstController@getLogin'));
+	Route::post('login', 'UserFirstController@postLogin');
+	Route::post('create', 'UserFirstController@postCreate');
 	Route::get('create', array('before' => 'myfil', 'uses' => 'UserFirstController@getCreate'));
-	
+	#-------------------------------------------------------
 	Route::get('user', array('before' => 'auth', 'uses' => 'UserController@getIndex'));//Working
 
 Route::get('/', array('uses' => 'HomeController@home', 'as' => 'home'));
@@ -39,5 +42,7 @@ Route::group(array('before' => 'auth'), function()
 {
 	Route::get('/user/logout', array('uses' => 'UserController@getLogout', 'as' => 'getLogout'));
 });
-
-//Route::get('test', 'UserFirstController@getAjax');
+#-------Testing------------------------------------------
+Route::post('test/{id}', 'UserFirstController@postAjax');
+Route::post('search/{id}', 'UserFirstController@postK');
+Route::post('ajax/{id}', 'UserFirstController@getAjax');

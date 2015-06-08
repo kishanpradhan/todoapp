@@ -88,7 +88,7 @@
 		<span><h4>{{ $mtasks->title }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></span>
 		<span>
 			<form method="post" action="{{ URL::route('delete-task', $mtasks->id) }}">
-				<input type="hidden" name="mtaskid" value="{{ $mtasks->id }}">
+				<input type="hidden" name="mtaskid" id="mtaskid" value="{{ $mtasks->id }}">
 				{{ Form::token() }}
 				<button type="submit">Delete {{ $mtasks->title }}</button>
 			</form>
@@ -96,17 +96,22 @@
 		<div>
 			<h3>Subtasks</h3>
 			@foreach($stasks as $stask)
-				<div>
+				<div id="{{ $stask->id }}">
 					<span>{{ $stask->title }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span>finished??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					@if($stask->completed == 0)
+					<span id="finish{{$stask->id}}"><button class="btn-primary finish-subtask" >finished??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></span>
+					@else
+					<span>Finished</span>
+					@endif
 					<span>	
 						<form method="post" action="{{ URL::route('delete-sub-task', $mtasks->id) }}">
 							<input type="hidden" name="staskid" value="{{ $stask->id }}">
 							{{ Form::token() }}
 							<button type="submit">Delete {{ $stask->title }}</button>
 						</form>
-					</span><br>
-					<div>{{ $stask->task_desc }}</div><br>
+					</span>
+					<div>{{ $stask->task_desc }}</div>
+					<hr>
 				</div>
 			@endforeach
 			<div><a href="{{ URL::route('add-sub-task', $mtasks->id) }}">Add new subtask</a></div>
@@ -188,10 +193,21 @@
 				</div>
 			</form>
 			<br>
-			<h5>Member associated</h5>
-			@for($i=0;$i<count($assign);$i++)
-				<div>{{ $assign[$i]['username'] }} : {{$assign[$i]['email']}}</div>
-			@endfor
+			
+			@if($assign != '')
+				<h4>Member associated</h4>
+				@for($i=0;$i<count($assign);$i++)
+					<div>{{ $assign[$i]['username'] }} : {{$assign[$i]['email']}}</div>
+					<div>
+						<form method="post" action="{{ URL::route('member-delete', $mtasks->id) }}">
+							<input type="hidden" name="assid" value="{{ $assign[$i]['id'] }}">
+							<button type="submit">Delete Memeber</button>
+						</form>
+					</div>
+				@endfor
+			@else
+				<div>No associated member</div>
+			@endif
 		</div>
 		<br>
 		<div>
@@ -201,7 +217,7 @@
 			@endfor
 			<div>
 				<form method="post" action="{{ URL::route('upload-file', $mtasks->id) }}" enctype="multipart/form-data">
-					<label for="file">File Upload</label>
+					<label for="file">File Uploaded</label>
 					<input type="file" name="file" id="file" >
 					<button type="submit">Upload</button>
 					@if($errors->has('file'))

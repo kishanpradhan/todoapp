@@ -63,6 +63,7 @@ class UserController extends BaseController
 
 	public function postCreate()
 	{
+		dd("sdlkmf");
 		$validate = Validator::make(Input::all(), array(
 			'firstname' => 'required|min:4',
 			'lastname' => 'required|min:4',
@@ -103,43 +104,43 @@ class UserController extends BaseController
 		}
 	}
 
-	public function getLogin()//Next time you will not be here
-	{
-		dd('die');
-		return View::make('hello');
-	}
+	// public function getLogin()//Next time you will not be here
+	// {
+	// 	dd('die');
+	// 	return View::make('hello');
+	// }
 
-	public function postLogin()
-	{
-		$validator = Validator::make(Input::all(), array(
-			'email' => 'required',
-			'password' => 'required',
-		));
+	// public function postLogin()
+	// {
+	// 	$validator = Validator::make(Input::all(), array(
+	// 		'email' => 'required',
+	// 		'password' => 'required',
+	// 	));
 
-		if($validator->fails())
-		{
-			return Redirect::to('user/login')->withErrors($validator)->withInput();
-		}
-		else
-		{
-			$remember = (Input::has('remember')) ? true : false;
+	// 	if($validator->fails())
+	// 	{
+	// 		return Redirect::to('user/login')->withErrors($validator)->withInput();
+	// 	}
+	// 	else
+	// 	{
+	// 		$remember = (Input::has('remember')) ? true : false;
 
-			$auth = Auth::attempt(array(
-				'email' => Input::get('email'),
-				'password' => Input::get('password')
-			), $remember);
+	// 		$auth = Auth::attempt(array(
+	// 			'email' => Input::get('email'),
+	// 			'password' => Input::get('password')
+	// 		), $remember);
 
-			if($auth)
-			{
-				Session::put('logemail', Input::get('email'));
-				return Redirect::intended('/user');
-			}
-			else
-			{
-				return Redirect::to('user/login')->with('fail','You entered wrong login credentials. Please try again.');
-			}
-		}	
-	}
+	// 		if($auth)
+	// 		{
+	// 			Session::put('logemail', Input::get('email'));
+	// 			return Redirect::intended('/user');
+	// 		}
+	// 		else
+	// 		{
+	// 			return Redirect::to('user/login')->with('fail','You entered wrong login credentials. Please try again.');
+	// 		}
+	// 	}	
+	// }
 
 	public function getLogout()
 	{

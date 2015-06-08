@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<title> Synaptics Driver Release Notes </title>
+<body>
+<img src="http://www.synaptics.com/sites/all/themes/synaptics/logo.png" alt="Synaptics">
+<h2> Synaptics Driver Release Notes for Acme_Inc
+</h2><p1>
+<!--syna-insert-here-->
+<br>
+Version: <strong> 17.0.19
+</strong><br>
+Date: 10-17-2013
+<br>Changes: OEM_Modules Kernel Slider  Localization ThinTouch Palm_Detection  ForcePad  Palm_Filter OSUtils  Win_Apps Device_IO&INFO CMPD Scrolling  Linux Plugins  Control_Panel INF Multifinger_Filter COM TPFilter Enhancement</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45281  </td>
+<td style="border-color: white; vertical-align: top;">Click action is not consistent  </td>
+<td style="border-color: white; vertical-align: top;">Fixed the issue which checked wrong registry control for enabling/disabling 1Palm+MF clicking.
+  </td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45755  </td>
+<td style="border-color: white; vertical-align: top;">resting palm + 1F click or 2F click support   </td>
+<td style="border-color: white; vertical-align: top;">Removed TL2s.
+  </td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45976  </td>
+<td style="border-color: white; vertical-align: top;">Skip force calculation for Palm  </td>
+<td style="border-color: white; vertical-align: top;">Skipped force calculation if there is only palm without any finger.
+  </td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.18
+</strong><br>
+Date: 10-11-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45934  </td>
+<td style="border-color: white; vertical-align: top;">Add different force release threshold for 2F drag there is one finger in the button  </td>
+<td style="border-color: white; vertical-align: top;">Added another force release threshold for 1F resting + another finger drag.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45976  </td>
+<td style="border-color: white; vertical-align: top;">Skip force calculation for Palm  </td>
+<td style="border-color: white; vertical-align: top;">Skipped force calculation for palm object.; Skipped force calculation if there is only  palm without any finger.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45977  </td>
+<td style="border-color: white; vertical-align: top;">Add "Enable Force" in the tray icon to disable/enable force continuation.  </td>
+<td style="border-color: white; vertical-align: top;">Added control option "Enable Force" in tray icon that allows end user to enable/disable force conitnuation pinch and scrolling, and 2F clicking.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.17
+</strong><br>
+Date: 10-03-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45281  </td>
+<td style="border-color: white; vertical-align: top;">Click action is not consistent  </td>
+<td style="border-color: white; vertical-align: top;">Added registry control to enable/disable 1Palm+MF clicking.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45755  </td>
+<td style="border-color: white; vertical-align: top;">resting palm + 1F click or 2F click support   </td>
+<td style="border-color: white; vertical-align: top;">1, Used ClickSmart for 2F click in ForcePad, we don't need to consider the force. 2, Made 1Palm+1F and 2F click work.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45756  </td>
+<td style="border-color: white; vertical-align: top;">resting palm + 2F tap  </td>
+<td style="border-color: white; vertical-align: top;">Fixed bit mask. Reimplemented MF tap with resting fingers in button zone.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45918  </td>
+<td style="border-color: white; vertical-align: top;">Add FW RawPacket Position filter to the driver  </td>
+<td style="border-color: white; vertical-align: top;">Add FW RawPacket Position filter to the driver
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.16
+</strong><br>
+Date: 09-26-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44750<br>(20130628 meeting with Kirk)  </td>
+<td style="border-color: white; vertical-align: top;">After log file capture Kirk would like the default folder opened so that the log file can be copied or viewed instead of just closing  </td>
+<td style="border-color: white; vertical-align: top;">Add option for user to open log file folder after collecting diagnostic info
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45827  </td>
+<td style="border-color: white; vertical-align: top;">Add option to show progress either in current command prompt window or show it in another command prompt window title  </td>
+<td style="border-color: white; vertical-align: top;">Added an option to show progress either in current command prompt window or show it in another command prompt window title
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.15
+</strong><br>
+Date: 09-19-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+</td><td style="border-color: white; vertical-align: top;">   </td>
+<td style="border-color: white; vertical-align: top;">Added HID mouse filter callback functions.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45582  </td>
+<td style="border-color: white; vertical-align: top;">BSoD on WHCK test  </td>
+<td style="border-color: white; vertical-align: top;">Keyboard filter driver should pass specific IOCTL to function driver.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45786  </td>
+<td style="border-color: white; vertical-align: top;">BSOD 0x1E occur when customer uninstall driver  </td>
+<td style="border-color: white; vertical-align: top;">For uninstall case, we still need to unregister notification handler.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45792  </td>
+<td style="border-color: white; vertical-align: top;">988033 Touchpad cannot be disabled/Enabled by hotkey(Fn+f2)on bullet unit  </td>
+<td style="border-color: white; vertical-align: top;">Fix Mux KBC if touchpad is connected to port 1, 2 or 3.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45801  </td>
+<td style="border-color: white; vertical-align: top;">Keep motion/tap/gesture suppression after palm before timeout  </td>
+<td style="border-color: white; vertical-align: top;">Last palm time stamp variables were reset. Fix "keep motion/tap/gesture suppressed after palm before timeout" feature.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45803  </td>
+<td style="border-color: white; vertical-align: top;">Show right asic type from Diag. page  </td>
+<td style="border-color: white; vertical-align: top;">Show right ASIC type for 1320 and 1321 on Diag. page.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.14
+</strong><br>
+Date: 09-13-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45582  </td>
+<td style="border-color: white; vertical-align: top;">BSoD on WHCK test  </td>
+<td style="border-color: white; vertical-align: top;">Fix BSOD when doing system WHCK test
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45663  </td>
+<td style="border-color: white; vertical-align: top;">BSOD for WHCK "Fault Injection Test"  </td>
+<td style="border-color: white; vertical-align: top;">Fix WHCK Fault Injection Test
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.13
+</strong><br>
+Date: 09-05-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44637  </td>
+<td style="border-color: white; vertical-align: top;">Testarossa - BITS087995: [PT_TSA]Sometimes mouse cursor    don't change icon as scrolling  </td>
+<td style="border-color: white; vertical-align: top;">Added fix to show custom cursor correctly.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45194  </td>
+<td style="border-color: white; vertical-align: top;">English description on Simplified Chinese OS  </td>
+<td style="border-color: white; vertical-align: top;">Update translations
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45590  </td>
+<td style="border-color: white; vertical-align: top;">BSOD 0x10D occur when doing Restart,S3 and S4 +LAN (Right usb port) 14 hours  </td>
+<td style="border-color: white; vertical-align: top;">Unregister RMI callback func before register it.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.12
+</strong><br>
+Date: 08-30-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45504  </td>
+<td style="border-color: white; vertical-align: top;">Spyder ULT - There is no function after install driver  </td>
+<td style="border-color: white; vertical-align: top;">Pass the WdfRequest handle to the WDF function .
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.11
+</strong><br>
+Date: 08-23-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45258  </td>
+<td style="border-color: white; vertical-align: top;">OEM_project_ (SYN1E62) - BSOD after installing v17.0.9 driver  </td>
+<td style="border-color: white; vertical-align: top;">Use InterlockedExchange() and add comments.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.10
+</strong><br>
+Date: 08-15-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45096  </td>
+<td style="border-color: white; vertical-align: top;">Device fails detection after reflashing fw using SynapticsReflash found in v17_0_7  </td>
+<td style="border-color: white; vertical-align: top;">Fixed Device fails detection after reflashing fw
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45258  </td>
+<td style="border-color: white; vertical-align: top;">OEM_project_ (SYN1E62) - BSOD after installing v17.0.9 driver  </td>
+<td style="border-color: white; vertical-align: top;">Use atomic variable to avoid reentry and add timeout mechanism as well.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.9.1
+</strong><br>
+Date: 08-14-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45258  </td>
+<td style="border-color: white; vertical-align: top;">OEMEnvy (SYN1E62) - BSOD after installing v17.0.9 driver  </td>
+<td style="border-color: white; vertical-align: top;">Rollback codes. It seems problem to call Mutex acquire function in DPC.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.9
+</strong><br>
+Date: 08-08-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45025  </td>
+<td style="border-color: white; vertical-align: top;">After use touchpad to reboot system, it would BSOD in OS  </td>
+<td style="border-color: white; vertical-align: top;">Check IRQL before calling RtlQueryRegistryValues function.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45111  </td>
+<td style="border-color: white; vertical-align: top;">Mode switch failed on Win8.1  </td>
+<td style="border-color: white; vertical-align: top;">Suppor OEM SMBus Host Controller.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45147  </td>
+<td style="border-color: white; vertical-align: top;">Cusor jumps with OEM 5BFP  </td>
+<td style="border-color: white; vertical-align: top;">Add mechanism to avoid reentry for SMBus driver. Port reentry avoidance mechanism to CRMIPort.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.8
+</strong><br>
+Date: 08-01-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-42303  </td>
+<td style="border-color: white; vertical-align: top;">Improve Driver build process and release note for customers  </td>
+<td style="border-color: white; vertical-align: top;">Remove useless notification in middle of build; Fix file verification script; Fix UTF-8 failure to translate non-ASCII apostrophe in release notes
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44354  </td>
+<td style="border-color: white; vertical-align: top;">Horizontal two finger scrolling can't work on PDF file via win8 PFD APP  </td>
+<td style="border-color: white; vertical-align: top;">Fix horizontal scrolling becomes vertical scrolling in Metro simple Chinese pdf reader
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44770  </td>
+<td style="border-color: white; vertical-align: top;">Bonsai - Can not use zoom in/out function after put a third or more fingers on the touchpad  </td>
+<td style="border-color: white; vertical-align: top;">Avoid canceling pinch action when more finger down feature is set.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44975  </td>
+<td style="border-color: white; vertical-align: top;">WHCK Failure (PS/2) - 17.0.5.3 | HPConsumer.inf (Next/Blue)  </td>
+<td style="border-color: white; vertical-align: top;">Added Synaptics generic compatible ID *SYN0002 for all PS2 touchpad infs; Added a hack until Microsoft fixes its WHCK tool
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-45042  </td>
+<td style="border-color: white; vertical-align: top;">Scrolling is not smoothly on metro app Photos and Camera while ZoomPerfect is enabled  </td>
+<td style="border-color: white; vertical-align: top;">Fix injection error for 2 finger scrolling gesture under Metro-mode app. This error will cause scrolling not smooth.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.7
+</strong><br>
+Date: 07-26-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44571  </td>
+<td style="border-color: white; vertical-align: top;">Spyder ULT - Default setting is incorrect  </td>
+<td style="border-color: white; vertical-align: top;">Duplicate of ClickpadViews, ClickpadViewModel for OEM Win7 UI for 2013.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44879  </td>
+<td style="border-color: white; vertical-align: top;">OEMWPF TPPB - modified Win7 UI for 2013  </td>
+<td style="border-color: white; vertical-align: top;">Changed help text. Added new help text, all in English for now.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.6
+</strong><br>
+Date: 07-18-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+</td><td style="border-color: white; vertical-align: top;">   </td>
+<td style="border-color: white; vertical-align: top;">Display ACM 2.0 type in Diagnostic panel
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44941  </td>
+<td style="border-color: white; vertical-align: top;">Getting wrong register offset of ACM20 existence for old FW  </td>
+<td style="border-color: white; vertical-align: top;">Parsing ACM2.0 existence information correctly.; Update the packrat number.; Provide ACM2.0 disabled setting.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.5
+</strong><br>
+Date: 07-11-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+</td><td style="border-color: white; vertical-align: top;">   </td>
+<td style="border-color: white; vertical-align: top;">Follow-up: add registry overrides for RMI4 caps; Add RMI4 capabilities query to API
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44188  </td>
+<td style="border-color: white; vertical-align: top;">Customer wants previous release notes combined with current release notes  </td>
+<td style="border-color: white; vertical-align: top;">Add a "history" feature to ReleaseNotes.HTML; Build script now creates a history from previous release notes
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44828<br>(958966)  </td>
+<td style="border-color: white; vertical-align: top;">It will pop up the error "SynTPEnh.exe-Entry Point Not Found" at the end of insttalling Synaptics driver on Vista 32&64.   </td>
+<td style="border-color: white; vertical-align: top;">Fixed SynTPEnh and SynTPHelper crash in Vista with driver built with Vs2012
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.4
+</strong><br>
+Date: 07-10-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+</td><td style="border-color: white; vertical-align: top;">   </td>
+<td style="border-color: white; vertical-align: top;">Do fixme and handle F11 data offsets properly. Still a wip since a large number of F11 data registers remain unchecked in the interrupt handler.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44721  </td>
+<td style="border-color: white; vertical-align: top;">Geasture issue on Google Chromewith High DPI setting  </td>
+<td style="border-color: white; vertical-align: top;">Fixed issue of two finger scrolling not working when cursor is near the right edge of the window with DPI=150%
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44750<br>(20130628 meeting with Kirk)  </td>
+<td style="border-color: white; vertical-align: top;">After log file capture Kirk would like the default folder opened so that the log file can be copied or viewed instead of just closing  </td>
+<td style="border-color: white; vertical-align: top;">In Windows 8.1 Preview, the GetVersion(Ex) APIs have been deprecated.; In Windows 8.1 Preview, the GetVersion(Ex) APIs have been deprecated. Update Manifest
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.3
+</strong><br>
+Date: 07-10-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-42303  </td>
+<td style="border-color: white; vertical-align: top;">Improve Driver build process and release note for customers  </td>
+<td style="border-color: white; vertical-align: top;">For release notes, if "Contact" field is missing, print the Creator of the Jira issue; Create a default empty dictionary in case JSON load fails for invalid and missing Jira numbers; Use Python decode('utf-8-sig') to strip byte order mark out of text; Do not distribute Release.txt any more since it is not updated.  Use ReleaseNotes.html.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-43964  </td>
+<td style="border-color: white; vertical-align: top;">ACM 2.0 change of algorithm strength driver meta-bug  </td>
+<td style="border-color: white; vertical-align: top;">Make contact type interface consistent. Add HasACM2() query.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44618<br>(TM-2768-001)  </td>
+<td style="border-color: white; vertical-align: top;">The systray icons will flicker when scrolling in a photos viewer with three finger flick  </td>
+<td style="border-color: white; vertical-align: top;">Only turned on IME workaround for twist action instead of all gestures for Photo Viewer.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44682  </td>
+<td style="border-color: white; vertical-align: top;">Use maximum force instead of total force for multiple fingers click   </td>
+<td style="border-color: white; vertical-align: top;">Used maximum force instead of total force for MF click.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44692<br>(ECR177029, ECR176429)  </td>
+<td style="border-color: white; vertical-align: top;">Copyright issue  </td>
+<td style="border-color: white; vertical-align: top;">Update Coypyright to 1996-2013
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.2
+</strong><br>
+Date: 07-10-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44299  </td>
+<td style="border-color: white; vertical-align: top;">Right side, down side "Return at edge of screen" in Momentum doesn't work  </td>
+<td style="border-color: white; vertical-align: top;">Fixed the bounce off screen edge in momentum not working issue with high DPI.
+</td>
+</tr>
+</tbody></table>
+
+<br>
+Version: <strong> 17.0.1
+</strong><br>
+Date: 07-10-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44440  </td>
+<td style="border-color: white; vertical-align: top;">Convert packet count to time  </td>
+<td style="border-color: white; vertical-align: top;">Improve taps-Convert packet count to time.; Make gesture work properly for different report rates of devices; Make PalmOnPad gesture works normal for various report rate of devices.; code improve by rename a function.; Add a utility function to clear packet.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44531  </td>
+<td style="border-color: white; vertical-align: top;">Silent Uninstallation fail in in toshiba.inf  </td>
+<td style="border-color: white; vertical-align: top;">Silent Uninstallation fail with SynIsdll built with Vs2012; Silent Uninstallation fail in in Win8 x64
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44533  </td>
+<td style="border-color: white; vertical-align: top;">Application crashes when we double tap on the top left corner of the TP to disable the touchpad in HPNEWUI v17.0.0  </td>
+<td style="border-color: white; vertical-align: top;">Changed call convention from std to cdecl to fix syntpenh creash when it reads Png file.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44564  </td>
+<td style="border-color: white; vertical-align: top;">ACM2.0 can't work on OEM machine  </td>
+<td style="border-color: white; vertical-align: top;">FollowUp:Change uiQuery36Offset -- to uiQuery36Offset--.; Correct RMI query parsing.
+</td>
+</tr>
+</tbody></table>
+
+
+Version: <strong> 17.0.0
+</strong><br>
+Date: 06-07-2013</p1>
+<br><br>
+<table border="1" width=90% border="2" bordercolor="white"        cellpadding="5" cellspacing="1" style="background-color:Gainsboro">
+<tbody>
+<tr>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 10%;">Issue Number</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Description</th>
+<th style="border-color: white; white-space: nowrap;        text-align: center; width: 45%;">Fix Comment</th></tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44045  </td>
+<td style="border-color: white; vertical-align: top;">_project_ (175) - Tap to click will invalid for few seconds after 2 or 3 finger slide on pad  </td>
+<td style="border-color: white; vertical-align: top;">Improve conmunication between API and Kernel Driver.;
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44046  </td>
+<td style="border-color: white; vertical-align: top;">_project_ (176) - Continue tap the 2-finger on the touchpad surface will always trigger both of mouse right and left button events.  </td>
+<td style="border-color: white; vertical-align: top;">Improve tap vs drag with 1F and multifingers, as well as communication between API and Kernel Driver..
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44244  </td>
+<td style="border-color: white; vertical-align: top;">Task tray Synaptics icon, "Pressure graph" and "MoodPad" items cannot be seen.  </td>
+<td style="border-color: white; vertical-align: top;">Fixed the wrong location of popmenu by right clicking trayicon, when the size of all items is set to 150% in control panel.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44299  </td>
+<td style="border-color: white; vertical-align: top;">Right side, down side "Return at edge of screen" in Momentum doesn't work  </td>
+<td style="border-color: white; vertical-align: top;">Fixed the bounce off screen edge in momentum not working issue, when the size of all items is set to 150% in control panel.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44300  </td>
+<td style="border-color: white; vertical-align: top;">Enable Tap zone, even touch right up corner, Maximum windows doesn't work  </td>
+<td style="border-color: white; vertical-align: top;">Fixed the issue of maximizing windows not working, when the size of all items is set to 150% in control panel.
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44348  </td>
+<td style="border-color: white; vertical-align: top;">Switch from VS2005 to VS2012 by Default  </td>
+<td style="border-color: white; vertical-align: top;">Save 2005 solution; Switch from VS2005 to VS2012 by Default Use include and lib files from T drive; Bump SynTPCo19.dll to SynTPCo20.dll; SynDell;share\Png; Solution files; KmdfLibraryVersion = 1.11, WdfCoInstaller01011.dll; SynOsLib dir.lst; Remove ...2012.sln files; Inf2Cat; forcetext2bin; Use Include and lib files from T drive
+</td>
+</tr>
+<tr>
+<td style="border-color: white; vertical-align: top; white-space: nowrap; text-align: center;">
+TP-44457  </td>
+<td style="border-color: white; vertical-align: top;">16.6.5 sony2006.inf Two-Finger horizontal scroll failed.  </td>
+<td style="border-color: white; vertical-align: top;">Only read application specific settings when apps switch happens, otherwise some user specific settings will be overridden if CPL is opened and changes are not apllied.
+</td>
+</tr>
+</tbody></table>
+</body></html>

@@ -22,3 +22,42 @@ function eleteSubcheck(i,j)
 }
 
 
+$(document).ready(function(){
+	$('.finish-subtask').click(function(){
+		
+		var sid = $(event.target).parent().parent().attr('id');
+		var mid = $("#mtaskid").val();
+		var poststr="id="+sid;
+		//alert(sid);
+		$.ajax({
+                type: 'post',
+                url: 'http://localhost:8000/test/'+mid,
+                data: poststr,
+                beforeSend: function() { 
+                    //$("#aa").hide(); 
+                },
+                success: function(data) {
+                    if(data.success == false)
+                    {
+                        alert("something wrong");
+                    } 
+                    else 
+                    {
+                        if(data == "success"){
+                        	var html = "<span>Finished</span>"
+                        	$("#finish"+sid).html(html);
+                        }
+                        else if(data == "failed"){
+                        	alert("Subtask doesnot belong to you");
+                        }
+                        else{
+                        	alert(data);
+                        }
+                    }
+                },
+                error: function(xhr, textStatus, thrownError) {
+                    alert('Something went to wrong.Please Try again later...');
+                }
+         });
+	});
+});
